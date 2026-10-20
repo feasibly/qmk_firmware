@@ -19,6 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
+/* Tap-hold timing in milliseconds */
+#define TAPPING_TERM 125
+
 /* Audio settings */
 #ifdef AUDIO_ENABLE
 #    define AUDIO_PIN C6  // Define this to enable the buzzer
