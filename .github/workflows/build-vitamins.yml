@@ -1,0 +1,33 @@
+name: Build Vitamins Included
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/qmk/qmk_cli:latest
+
+    steps:
+      - name: Configure Git
+        run: git config --global --add safe.directory '*'
+
+      - name: Check out firmware
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Compile Vitamins Included VIA firmware
+        run: qmk compile -kb vitamins_included/rev2 -km via
+
+      - name: Upload compiled firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitamins-included-rev2-via-125ms
+          path: vitamins_included_rev2_via.hex
+          if-no-files-found: error
