@@ -31,7 +31,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LT(3, KC_ENT):
-            return false;  // Enter: tap-preferred
+        case LCTL_T(KC_ESC):
+            return false;  // Enter and Control/Escape: tap-preferred
         default:
             return true;   // Other dual-role keys: hold-preferred
     }
