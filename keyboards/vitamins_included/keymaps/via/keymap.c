@@ -27,3 +27,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MS_WHLD, KC_TRNS, KC_TRNS, MS_WHLU, MS_ACL0, MS_ACL1, MS_ACL2, KC_TRNS
     )
 };
+
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LT(3, KC_ENT):
+            return false;  // Enter: tap-preferred
+        default:
+            return true;   // Other dual-role keys: hold-preferred
+    }
+}

@@ -5,5 +5,5 @@
 // Reduce layer-state storage and code size; this keymap uses only four layers
 #define LAYER_STATE_8BIT
 
-// Prefer the hold action when another key is pressed (ZMK hold-preferred equivalent)
-#define HOLD_ON_OTHER_KEY_PRESS
+// Configure hold preference per key so Enter can remain tap-preferred
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
